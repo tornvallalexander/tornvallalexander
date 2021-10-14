@@ -1,5 +1,9 @@
 import React from "react";
+
 import { ChakraProvider } from "@chakra-ui/react";
+
+import "@fontsource/lexend-deca";
+import "@fontsource/poppins"
 
 import theme from "./theme";
 

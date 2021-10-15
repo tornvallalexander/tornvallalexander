@@ -173,7 +173,7 @@ const SideNavbar: React.FC<SideNavbarProps> = ({ children }) => {
           <Icon color="gray.500" as={FaBell} cursor="pointer" />
         </Flex>
 
-        <Box as="main" p="4" color="cyan.50">
+        <Box as="main" p="0" color="cyan.50">
           { children }
         </Box>
         <Footer />

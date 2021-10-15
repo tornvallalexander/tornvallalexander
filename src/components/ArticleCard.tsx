@@ -24,7 +24,8 @@ const ArticleCard = ({ author, updatedAt, metaDescription, title, categories, sl
 
   return (
     <Flex
-      p={50}
+      p={{ base: "0", md: "50"}}
+      pb={{ base: "10", md: "50"}}
       w="full"
       alignItems="center"
       justifyContent="center"
@@ -36,7 +37,7 @@ const ArticleCard = ({ author, updatedAt, metaDescription, title, categories, sl
         // rounded="lg"
         shadow="lg"
         bg="gray.800"
-        maxW="2xl"
+        maxW={{ base: "md", md: "2xl" }}
       >
         <Flex justifyContent="space-between" alignItems="center">
           <chakra.span

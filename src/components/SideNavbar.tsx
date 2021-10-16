@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Box,
   Collapse,
@@ -20,6 +21,7 @@ import { BsGearFill } from "react-icons/bs";
 import { FiMenu, FiSearch } from "react-icons/fi"
 import { HiCode, HiCollection } from "react-icons/hi";
 import { MdHome, MdKeyboardArrowRight } from "react-icons/md";
+import { Link as RouterLink } from "gatsby"
 
 import Footer from "./footer"
 
@@ -32,9 +34,11 @@ const SideNavbar: React.FC<SideNavbarProps> = ({ children }) => {
   const integrations = useDisclosure();
 
   const NavItem = (props: any) => {
-    const { icon, children, ...rest } = props;
+    const { icon, children, slug, ...rest } = props;
     return (
       <Flex
+        as={RouterLink}
+        to={slug ? slug: null}
         align="center"
         px="4"
         pl="4"
@@ -100,8 +104,9 @@ const SideNavbar: React.FC<SideNavbarProps> = ({ children }) => {
         fontSize="sm"
         color="gray.600"
         aria-label="Main Navigation"
+        textStyle="body"
       >
-        <NavItem icon={MdHome}>Home</NavItem>
+        <NavItem icon={MdHome} slug={"/"}>Home</NavItem>
         <NavItem icon={FaRss}>Articles</NavItem>
         <NavItem icon={HiCollection}>Collections</NavItem>
         <NavItem icon={FaClipboardCheck}>Checklists</NavItem>
@@ -168,7 +173,7 @@ const SideNavbar: React.FC<SideNavbarProps> = ({ children }) => {
           />
           <InputGroup w="96" display={{ base: "none", md: "flex" }}>
             <InputLeftElement color="gray.500" children={<FiSearch />} />
-            <Input placeholder="Search for articles..." />
+            <Input textStyle="body" placeholder="Search for articles..." />
           </InputGroup>
           <Icon color="gray.500" as={FaBell} cursor="pointer" />
         </Flex>

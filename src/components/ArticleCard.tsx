@@ -5,6 +5,7 @@ import {
   Flex,
   Link,
 } from "@chakra-ui/react";
+import { Link as RouterLink } from "gatsby";
 import { GatsbyImage, getImage, ImageDataLike } from "gatsby-plugin-image"
 
 type ArticleCardQueryTypes = {
@@ -34,7 +35,6 @@ const ArticleCard = ({ author, updatedAt, metaDescription, title, categories, sl
         mx="auto"
         px={8}
         py={4}
-        // rounded="lg"
         shadow="lg"
         bg="gray.800"
         maxW={{ base: "md", md: "2xl" }}
@@ -69,6 +69,8 @@ const ArticleCard = ({ author, updatedAt, metaDescription, title, categories, sl
 
         <Box mt={2}>
           <Link
+            as={RouterLink}
+            to={`/p/${slug}`}
             fontSize="2xl"
             color="white"
             fontWeight="700"
@@ -86,6 +88,8 @@ const ArticleCard = ({ author, updatedAt, metaDescription, title, categories, sl
 
         <Flex justifyContent="space-between" alignItems="center" mt={4}>
           <Link
+            as={RouterLink}
+            to={`/p/${slug}`}
             color="brand.400"
             _hover={{ textDecor: "underline" }}
           >

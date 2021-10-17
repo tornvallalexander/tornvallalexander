@@ -48,11 +48,12 @@ export const EmbeddedAsset = ({ children }: ImageProps) => {
   const image = getImage(children.data.target);
 
   return (
-    <Box mt="40px" mb="40px">
+    <Box mt="40px" mb="40px" borderRadius="2xl">
       {image ? (
         <GatsbyImage
           image={image}
           alt={children.data.target.title}
+          style={{ borderRadius: "16px"}}
         />
       ) : null}
     </Box>

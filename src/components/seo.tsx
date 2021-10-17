@@ -8,6 +8,7 @@ type SEOProps = {
   description?: string,
   lang?: string,
   meta?: Meta,
+  keywords?: string[],
 }
 
 type NameMetaObj = {
@@ -32,7 +33,7 @@ type QueryTypes = {
   }
 }
 
-export const Seo: React.FC<SEOProps> = ({ description="", lang="en", meta=[], title}) => {
+export const Seo: React.FC<SEOProps> = ({ description="", lang="en", meta=[], title, keywords}) => {
   const { site } = useStaticQuery<QueryTypes>(
     graphql`
       query {
@@ -90,7 +91,16 @@ export const Seo: React.FC<SEOProps> = ({ description="", lang="en", meta=[], ti
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta)}
+      ]
+        .concat(
+          keywords && keywords.length > 0
+            ? {
+              name: `keywords`,
+              content: keywords.join(`, `),
+            }
+            : []
+        )
+        .concat(meta)}
     />
   )
 }

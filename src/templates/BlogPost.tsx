@@ -30,7 +30,7 @@ type BlogPostProps = {
   }
 }
 
-const TestPage = ({ data }: BlogPostProps) => {
+const BlogPostPage = ({ data }: BlogPostProps) => {
   const { title, metaDescription, createdAt, keywords, article, author, categories } = data.post;
 
   const authorImage = getImage(author.avatarImage)
@@ -52,7 +52,7 @@ const TestPage = ({ data }: BlogPostProps) => {
           pb="-4rem"
           px="1rem"
         >
-          <GridItem colspan={1} color="white">
+          <GridItem colSpan={1} color="white">
             <Box
               bg="gray.800"
               borderRadius="2xl"
@@ -76,10 +76,11 @@ const TestPage = ({ data }: BlogPostProps) => {
                   {categories.map((category) => {
                     return (
                       <Link
+                        key={category}
                         px={3}
                         py={1}
                         ml={2}
-                        bg="gray.600"
+                        bg="#0279ff"
                         color="gray.100"
                         fontSize="sm"
                         fontWeight="700"
@@ -146,4 +147,4 @@ export const blogPostQuery = graphql`
   }
 `
 
-export default TestPage;
+export default BlogPostPage;

@@ -46,7 +46,7 @@ export default function Footer() {
           }}>
           <Logo />
         </Flex>
-        <Text pt={6} fontSize={'sm'} textAlign={'center'}>
+        <Text pt={6} fontSize={'sm'} textAlign={'center'} textStyle="body">
           © 2021 tornvallalexander. All rights reserved
         </Text>
       </Box>

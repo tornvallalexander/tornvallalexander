@@ -52,7 +52,7 @@ const TestPage = ({ data }: BlogPostProps) => {
           pb="-4rem"
           px="1rem"
         >
-          <GridItem colspan={1}>
+          <GridItem colspan={1} color="white">
             <Box
               bg="gray.800"
               borderRadius="2xl"
@@ -101,7 +101,7 @@ const TestPage = ({ data }: BlogPostProps) => {
 
           <GridItem colSpan={2} textAlign="left">
               <Box bg="gray.800" borderRadius="2xl" p={{ base: "1rem", md: "2rem" }}>
-                <Heading as="h1" textStyle="heading" mb="2rem">
+                <Heading as="h1" textStyle="heading" mb="2rem" color="white">
                   {title}
                 </Heading>
                 <BlogBody content={article} />

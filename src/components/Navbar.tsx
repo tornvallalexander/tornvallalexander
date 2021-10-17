@@ -4,7 +4,6 @@ import {
   chakra,
   Box,
   Flex,
-  useColorModeValue,
   HStack,
   Button,
   useDisclosure,
@@ -16,7 +15,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { Link as RouterLink } from "gatsby";
 
 export default function Navbar() {
-  const bg = useColorModeValue("white", "gray.800");
+  const bg = "gray.800";
   const mobileNav = useDisclosure();
 
   return (
@@ -70,7 +69,7 @@ export default function Navbar() {
                 display={{ base: "flex", md: "none" }}
                 aria-label="Open menu"
                 fontSize="20px"
-                color={useColorModeValue("gray.800", "inherit")}
+                color="gray.800"
                 variant="ghost"
                 icon={<AiOutlineMenu />}
                 onClick={mobileNav.onOpen}

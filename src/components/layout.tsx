@@ -11,7 +11,7 @@ type LayoutProps = {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      <Box bg="gray.600">
+      <Box bg="gray.700">
         <Navbar />
         <Box py="4rem">
           {children}

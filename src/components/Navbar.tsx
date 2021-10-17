@@ -5,7 +5,6 @@ import {
   Box,
   Flex,
   HStack,
-  Button,
   useDisclosure,
   VStack,
   IconButton,
@@ -14,12 +13,19 @@ import {
 import { AiOutlineMenu } from "react-icons/ai";
 import { Link as RouterLink } from "gatsby";
 
+import { NavButton } from "./Button"
+
 export default function Navbar() {
   const bg = "gray.800";
   const mobileNav = useDisclosure();
 
   return (
-    <Box pt={{ base: "0rem", md: "1rem" }} position="sticky" top={{ base: "0rem", md: "1rem" }} zIndex="1400">
+    <Box
+      pt={{ base: "0rem", md: "1rem" }}
+      position="sticky"
+      top={{ base: "0rem", md: "1rem" }}
+      zIndex="1400"
+    >
       <chakra.header
         bg={bg}
         maxW="600px"
@@ -28,6 +34,7 @@ export default function Navbar() {
         mx="auto"
         shadow="md"
         borderRadius={{ base: "none", md: "full"}}
+        boxShadow="rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px"
       >
         <Flex alignItems="center" justifyContent={{ base: "space-between", md: "space-evenly"}} mx="auto">
           <Flex>
@@ -60,17 +67,18 @@ export default function Navbar() {
               color="brand.500"
               display={{ base: "none", md: "inline-flex" }}
             >
-              <Button variant="ghost">Blog</Button>
-              <Button variant="ghost">Company</Button>
-              <Button variant="ghost">Sign in</Button>
+              <NavButton>Blog</NavButton>
+              <NavButton>About</NavButton>
+              <NavButton>Sign in</NavButton>
             </HStack>
             <Box display={{ base: "inline-flex", md: "none" }}>
               <IconButton
                 display={{ base: "flex", md: "none" }}
                 aria-label="Open menu"
                 fontSize="20px"
-                color="gray.800"
+                color="white"
                 variant="ghost"
+                _hover={{ color: "gray.800", bg: "gray.100"}}
                 icon={<AiOutlineMenu />}
                 onClick={mobileNav.onOpen}
               />
@@ -84,32 +92,22 @@ export default function Navbar() {
                 flexDirection="column"
                 p={2}
                 pb={4}
-                m={2}
+                m={4}
                 bg={bg}
                 spacing={3}
                 rounded="sm"
+                borderRadius="2xl"
                 shadow="sm"
               >
                 <CloseButton
                   aria-label="Close menu"
                   onClick={mobileNav.onClose}
+                  color="white"
                 />
 
-                <Button w="full" variant="ghost">
-                  Features
-                </Button>
-                <Button w="full" variant="ghost">
-                  Pricing
-                </Button>
-                <Button w="full" variant="ghost">
-                  Blog
-                </Button>
-                <Button w="full" variant="ghost">
-                  Company
-                </Button>
-                <Button w="full" variant="ghost">
-                  Sign in
-                </Button>
+                <NavButton>Blog</NavButton>
+                <NavButton>About</NavButton>
+                <NavButton>Sign in</NavButton>
               </VStack>
             </Box>
           </HStack>

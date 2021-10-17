@@ -24,7 +24,7 @@ const ArticleCard = ({ author, updatedAt, metaDescription, title, categories, sl
   const authorImage = getImage(author.avatarImage);
 
   return (
-    <Box borderRadius="2xl">
+    <Box mx="1rem">
       <Flex
         p={{ base: "0", md: "50"}}
         pb={{ base: "10", md: "50"}}
@@ -39,6 +39,7 @@ const ArticleCard = ({ author, updatedAt, metaDescription, title, categories, sl
           shadow="lg"
           bg="gray.800"
           maxW={{ base: "md", md: "2xl" }}
+          borderRadius="2xl"
         >
           <Flex justifyContent="space-between" alignItems="center">
             <chakra.span
@@ -51,10 +52,11 @@ const ArticleCard = ({ author, updatedAt, metaDescription, title, categories, sl
               { categories.map((category) => {
                 return (
                   <Link
+                    key={category}
                     px={3}
                     py={1}
                     ml={2}
-                    bg="gray.600"
+                    bg="#0279ff"
                     color="gray.100"
                     fontSize="sm"
                     fontWeight="700"
@@ -91,7 +93,7 @@ const ArticleCard = ({ author, updatedAt, metaDescription, title, categories, sl
             <Link
               as={RouterLink}
               to={`/p/${slug}`}
-              color="brand.400"
+              color="white"
               _hover={{ textDecor: "underline" }}
             >
               Read more

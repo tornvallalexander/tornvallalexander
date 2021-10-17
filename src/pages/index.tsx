@@ -36,7 +36,7 @@ const IndexPage = () => {
                   gatsbyImageData(width: 50)
                 }
               }
-              updatedAt(formatString: "MMMM DD YYYY", locale: "en")
+              updatedAt(formatString: "MMMM DD, YYYY", locale: "en")
               metaDescription
               title
               categories
@@ -54,6 +54,7 @@ const IndexPage = () => {
         const { author, updatedAt, metaDescription, title, categories, slug} = post.node
         return (
           <ArticleCard
+            key={title}
             author={author}
             categories={categories}
             metaDescription={metaDescription}

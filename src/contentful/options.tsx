@@ -53,7 +53,7 @@ export const EmbeddedAsset = ({ children }: ImageProps) => {
         <GatsbyImage
           image={image}
           alt={children.data.target.title}
-          style={{ borderRadius: "16px"}}
+          style={{ borderRadius: "16px", transform: "translateZ(0)"}}
         />
       ) : null}
     </Box>

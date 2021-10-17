@@ -1,6 +1,8 @@
 import * as React from "react"
 
-import SideNavbar from "./SideNavbar"
+import Navbar from "./Navbar"
+import Footer from "./footer"
+import { Box } from "@chakra-ui/react"
 
 type LayoutProps = {
   children: React.ReactNode
@@ -9,7 +11,13 @@ type LayoutProps = {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      <SideNavbar children={children} />
+      <Box bg="gray.600">
+        <Navbar />
+        <Box py="4rem">
+          {children}
+        </Box>
+      </Box>
+      <Footer />
     </>
   )
 }

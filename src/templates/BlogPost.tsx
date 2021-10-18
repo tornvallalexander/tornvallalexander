@@ -129,6 +129,14 @@ export const blogPostQuery = graphql`
             gatsbyImageData
             title
           }
+          ... on ContentfulCodeBlock {
+            contentful_id
+            __typename
+            language
+            code {
+              code
+            }
+          }
         }
       }
       author {

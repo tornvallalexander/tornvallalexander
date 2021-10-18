@@ -16,7 +16,6 @@ import { Link as RouterLink } from "gatsby";
 import { NavButton } from "./Button"
 
 export default function Navbar() {
-  const bg = "gray.800";
   const mobileNav = useDisclosure();
 
   return (
@@ -27,7 +26,9 @@ export default function Navbar() {
       zIndex="1400"
     >
       <chakra.header
-        bg={bg}
+        bg="rgb(26,32,44, 0.95)"
+        border="1px solid #2d3748"
+        backdropFilter="blur(3px)"
         maxW="600px"
         px={{ base: 2, sm: 4 }}
         py={4}
@@ -93,7 +94,7 @@ export default function Navbar() {
                 p={2}
                 pb={4}
                 m={4}
-                bg={bg}
+                bg={"gray.800"}
                 spacing={3}
                 rounded="sm"
                 borderRadius="2xl"

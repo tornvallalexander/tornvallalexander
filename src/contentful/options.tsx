@@ -9,6 +9,7 @@ import {
 import { Options } from "@contentful/rich-text-react-renderer";
 import { Text, Heading, Box } from "@chakra-ui/react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { CodeBlock, atomOneDark } from "react-code-blocks"
 
 type BlogBodyProps = {
   content: RenderRichTextData<ContentfulRichTextGatsbyReference>
@@ -80,6 +81,28 @@ const BlogBody = ({ content}: BlogBodyProps) => {
       [BLOCKS.EMBEDDED_ASSET]: (node) => (
         <EmbeddedAsset>{node}</EmbeddedAsset>
       ),
+
+      [BLOCKS.EMBEDDED_ENTRY]: (node) => {
+        if (!node.data.target) {
+          return;
+        }
+
+        if (node.data.target.__typename === "ContentfulCodeBlock") {
+          const { code, language } = node.data.target;
+
+          return (
+            <Box my="2rem" borderRadius="2xl" fontSize="md" fontFamily="Roboto Mono">
+              <CodeBlock
+                text={code.code}
+                language={language}
+                theme={atomOneDark}
+                startingLineNumber={1}
+                showLineNumbers
+              />
+            </Box>
+          )
+        }
+      },
 
     },
     renderMark: {

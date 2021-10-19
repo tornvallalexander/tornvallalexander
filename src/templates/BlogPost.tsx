@@ -43,12 +43,23 @@ type BlogPostProps = {
       keywords: string[],
       title: string,
       categories: string[],
+      slug: string,
     }
   }
 }
 
 const BlogPostPage = ({ data }: BlogPostProps) => {
-  const { title, metaDescription, createdAt, keywords, article, author, categories } = data.post;
+  const {
+    title,
+    metaDescription,
+    createdAt,
+    keywords,
+    article,
+    author,
+    categories,
+    slug,
+  } = data.post;
+
   const featuredBlogPosts = data.featuredBlogPosts;
 
   return (
@@ -78,6 +89,7 @@ const BlogPostPage = ({ data }: BlogPostProps) => {
                 author={author}
                 categories={categories}
                 createdAt={createdAt}
+                slug={slug}
               />
 
               <FeaturedPostsBox featuredBlogPosts={featuredBlogPosts} />
@@ -101,6 +113,7 @@ const BlogPostPage = ({ data }: BlogPostProps) => {
                 author={author}
                 categories={categories}
                 createdAt={createdAt}
+                slug={slug}
               />
 
               <FeaturedPostsBox featuredBlogPosts={featuredBlogPosts} />
@@ -171,6 +184,7 @@ export const BlogPostQuery = graphql`
       keywords
       title
       categories
+      slug
     }
   }
 `

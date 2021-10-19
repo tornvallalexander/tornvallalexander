@@ -27,8 +27,8 @@ const ArticleCard = ({ author, updatedAt, metaDescription, title, categories, sl
   return (
     <Box mx="1rem">
       <Flex
-        p={{ base: "0", md: "50"}}
-        pb={{ base: "10", md: "50"}}
+        p={{ base: "0", md: "10"}}
+        pb={{ base: "10", md: "0"}}
         w="full"
         alignItems="center"
         justifyContent="center"
@@ -93,24 +93,15 @@ const ArticleCard = ({ author, updatedAt, metaDescription, title, categories, sl
 
             <Flex alignItems="center">
               <Box
-                mx={4}
                 w={10}
                 h={10}
                 rounded="full"
                 fit="cover"
-                display={{ base: "none", sm: "block" }}
               >
                 { authorImage ? (
                   <GatsbyImage image={authorImage} alt={author.fullName} />
                 ): null}
               </Box>
-              <Link
-                color="gray.200"
-                fontWeight="700"
-                cursor="pointer"
-              >
-                {author.fullName}
-              </Link>
             </Flex>
           </Flex>
         </Box>

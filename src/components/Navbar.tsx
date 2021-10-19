@@ -29,7 +29,7 @@ export default function Navbar() {
         bg="rgb(26,32,44, 0.95)"
         border="1px solid #2d3748"
         backdropFilter="blur(3px)"
-        maxW="600px"
+        maxW={{ base: "full", md: "600px" }}
         px={{ base: 2, sm: 4 }}
         py={4}
         mx="auto"

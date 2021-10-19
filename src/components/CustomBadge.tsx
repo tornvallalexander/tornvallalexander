@@ -15,9 +15,10 @@ const CustomBadge = ({ children }: BadgeProps) => {
       bg="#0279ff"
       color="gray.100"
       fontSize="sm"
+      transition=".3s"
       fontWeight="700"
-      rounded="md"
-      _hover={{ bg: "gray.500" }}
+      rounded="2xl"
+      _hover={{ bg: "none" }}
     >
       {children}
     </Link>

@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { Box, Flex, Text } from "@chakra-ui/react"
 import { GatsbyImage, getImage, ImageDataLike } from "gatsby-plugin-image"
+import { Link as RouterLink } from "gatsby";
 
 import CustomBadge from "./CustomBadge"
 
@@ -12,9 +13,10 @@ type BlogInfoBoxProps = {
   },
   categories: string[]
   createdAt: string,
+  slug: string,
 }
 
-const BlogInfoBox = ({ author, categories, createdAt}: BlogInfoBoxProps) => {
+const BlogInfoBox = ({ author, categories, createdAt, slug}: BlogInfoBoxProps) => {
   const { avatarImage, fullName } = author;
 
   const authorImage = getImage(avatarImage);
@@ -27,12 +29,21 @@ const BlogInfoBox = ({ author, categories, createdAt}: BlogInfoBoxProps) => {
     >
       <Flex justifyContent="space-between" alignItems="center" mb="2rem">
         <Text fontSize="lg">Written by</Text>
-        {authorImage && (
-          <GatsbyImage
-            image={authorImage}
-            alt={fullName}
-          />
-        )}
+        <Box
+          as={RouterLink}
+          to={`/profile/${slug}`}
+          borderRadius="full"
+          bg="gray.700"
+          transition=".3s"
+          _hover={{ bg: "gray.800"}}
+        >
+          {authorImage && (
+            <GatsbyImage
+              image={authorImage}
+              alt={fullName}
+            />
+          )}
+        </Box>
       </Flex>
       <Flex justifyContent="space-between" alignItems="center" mb="2rem">
         <Text fontSize="lg">Categories</Text>

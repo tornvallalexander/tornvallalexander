@@ -69,10 +69,10 @@ const BlogPostPage = ({ data }: BlogPostProps) => {
           pb="-4rem"
           px="1rem"
         >
-          <GridItem colSpan={1} color="white">
+          <GridItem d={{ base: "none", md: "block"}} colSpan={1} color="white">
             <Box
               position="sticky"
-              top="9.5rem"
+              top="9.6rem"
             >
               <BlogInfoBox
                 author={author}
@@ -92,6 +92,20 @@ const BlogPostPage = ({ data }: BlogPostProps) => {
                 <BlogBody content={article} />
               </Box>
           </GridItem>
+
+          <GridItem d={{ base: "block", md: "none"}} colSpan={1} color="white" mt="2rem" mb="-8rem">
+            <Box
+              position="relative"
+            >
+              <BlogInfoBox
+                author={author}
+                categories={categories}
+                createdAt={createdAt}
+              />
+
+              <FeaturedPostsBox featuredBlogPosts={featuredBlogPosts} />
+            </Box>
+          </GridItem>
         </Grid>
       </Box>
 
@@ -107,7 +121,7 @@ export const BlogPostQuery = graphql`
     ) {
       edges {
         node {
-          createdAt(formatString: "DD MMMM, YYYY", locale: "sv")
+          createdAt(formatString: "DD MMMM, YYYY", locale: "en")
           featureImage {
             gatsbyImageData(aspectRatio: 1.333, width: 100)
             title

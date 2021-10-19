@@ -52,7 +52,9 @@ const ArticleCard = ({ author, updatedAt, metaDescription, title, categories, sl
             <Box>
               { categories.map((category) => {
                 return (
-                  <CustomBadge>
+                  <CustomBadge
+                    key={category}
+                  >
                     {category}
                   </CustomBadge>
                   )

@@ -39,6 +39,7 @@ const FeaturedPostsBox = ({ featuredBlogPosts }: FeaturedPostsBoxProps) => {
         const mb = index === 0 ? "2rem": "0rem"
         return (
           <Link
+            key={index}
             as={RouterLink}
             to={`/p/${slug}`}
             _hover={{
@@ -47,11 +48,11 @@ const FeaturedPostsBox = ({ featuredBlogPosts }: FeaturedPostsBoxProps) => {
           >
             <Flex mb={mb} alignItems="center">
               {resFeatureImage && (
-                <Box width="100px">
+                <Box>
                   <GatsbyImage
                     image={resFeatureImage}
                     alt="hello"
-                    style={{ borderRadius: "8px"}}
+                    style={{ borderRadius: "8px", width: "100px"}}
                   />
                 </Box>
               )}

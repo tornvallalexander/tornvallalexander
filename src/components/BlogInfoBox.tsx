@@ -39,7 +39,9 @@ const BlogInfoBox = ({ author, categories, createdAt}: BlogInfoBoxProps) => {
         <Box>
           {categories.map((category) => {
             return (
-              <CustomBadge>
+              <CustomBadge
+                key={category}
+              >
                 {category}
               </CustomBadge>
             )

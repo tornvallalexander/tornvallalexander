@@ -7,6 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "gatsby";
 import { GatsbyImage, getImage, ImageDataLike } from "gatsby-plugin-image"
+import CustomBadge from "./CustomBadge"
 
 type ArticleCardProps = {
   author: {
@@ -51,20 +52,9 @@ const ArticleCard = ({ author, updatedAt, metaDescription, title, categories, sl
             <Box>
               { categories.map((category) => {
                 return (
-                  <Link
-                    key={category}
-                    px={3}
-                    py={1}
-                    ml={2}
-                    bg="#0279ff"
-                    color="gray.100"
-                    fontSize="sm"
-                    fontWeight="700"
-                    rounded="md"
-                    _hover={{ bg: "gray.500" }}
-                  >
+                  <CustomBadge>
                     {category}
-                  </Link>
+                  </CustomBadge>
                   )
               })}
             </Box>

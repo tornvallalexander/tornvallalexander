@@ -1,13 +1,16 @@
 import * as React from "react";
 
-import { Box, Flex, Grid, GridItem, Heading, Link, Text} from "@chakra-ui/react"
-import { graphql, Link as RouterLink } from "gatsby"
-import { GatsbyImage, getImage, ImageDataLike } from "gatsby-plugin-image"
+import { Box, Grid, GridItem, Heading} from "@chakra-ui/react"
+import { graphql } from "gatsby"
+import { ImageDataLike } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import BlogBody from "../contentful/options"
 import { ContentfulRichTextGatsbyReference } from "gatsby-source-contentful/rich-text"
+
+import BlogInfoBox from "../components/BlogInfoBox"
+import FeaturedPostsBox from "../components/FeaturedPostsBox"
 
 type BlogPostProps = {
   data: {
@@ -48,7 +51,6 @@ const BlogPostPage = ({ data }: BlogPostProps) => {
   const { title, metaDescription, createdAt, keywords, article, author, categories } = data.post;
   const featuredBlogPosts = data.featuredBlogPosts;
 
-  const authorImage = getImage(author.avatarImage)
   return (
     <Layout>
       <Seo title={title} description={metaDescription} keywords={keywords} />
@@ -72,102 +74,13 @@ const BlogPostPage = ({ data }: BlogPostProps) => {
               position="sticky"
               top="9.5rem"
             >
-              <Box
-                bg="gray.800"
-                borderRadius="2xl"
-                p={{ base: "1rem", md: "2rem" }}
-                mb={{ base: "2rem", md: "0rem"}}
-              >
-                <Flex justifyContent="space-between" alignItems="center" mb="2rem">
-                  <Text fontSize="lg">Written by</Text>
-                  {authorImage && (
-                    <GatsbyImage
-                      image={authorImage}
-                      alt={author.fullName}
-                    />
-                  )}
-                </Flex>
-                <Flex justifyContent="space-between" alignItems="center" mb="2rem">
-                  <Text fontSize="lg">Categories</Text>
-                  <Box>
-                    {categories.map((category) => {
-                      return (
-                        <Link
-                          key={category}
-                          px={3}
-                          py={1}
-                          ml={2}
-                          bg="#0279ff"
-                          color="gray.100"
-                          fontSize="sm"
-                          fontWeight="700"
-                          rounded="md"
-                          _hover={{ bg: "gray.500" }}
-                        >
-                          {category}
-                        </Link>
-                      )
-                    })}
-                  </Box>
-                </Flex>
-                <Flex justifyContent="space-between" alignItems="center">
-                  <Text fontSize="lg">Published</Text>
-                  <Text fontSize="lg">{createdAt}</Text>
-                </Flex>
-              </Box>
+              <BlogInfoBox
+                author={author}
+                categories={categories}
+                createdAt={createdAt}
+              />
 
-              <Box
-                bg="gray.800"
-                borderRadius="2xl"
-                p={{ base: "1rem", md: "2rem" }}
-                mt="2rem"
-                mb={{ base: "2rem", md: "0rem"}}
-              >
-                {featuredBlogPosts.edges.map((post, index) => {
-                  const { createdAt, author: authorObj, featureImage, title, slug } = post.node;
-
-                  const authorObjImage = getImage(authorObj.avatarImage)
-                  const resFeatureImage = getImage(featureImage)
-
-                  const mb = index === 0 ? "2rem": "0rem"
-                  return (
-                    <Link
-                      as={RouterLink}
-                      to={`/p/${slug}`}
-                      _hover={{
-                        textDecoration: "none",
-                      }}
-                    >
-                      <Flex mb={mb} alignItems="center">
-                        {resFeatureImage && (
-                          <Box width="100px">
-                            <GatsbyImage
-                              image={resFeatureImage}
-                              alt="hello"
-                              style={{ borderRadius: "8px"}}
-                            />
-                          </Box>
-                        )}
-
-                        <Box ml="1rem" textAlign="left">
-                          <Heading as="p" fontSize="md">{title}</Heading>
-
-                          <Flex justifyContent="space-between" alignItems="center">
-                            <Text fontSize="sm">{createdAt}</Text>
-                            {authorObjImage && (
-                              <GatsbyImage
-                                image={authorObjImage}
-                                alt={authorObj.fullName}
-                              />
-                            )}
-                          </Flex>
-                        </Box>
-
-                      </Flex>
-                    </Link>
-                  )
-                })}
-              </Box>
+              <FeaturedPostsBox featuredBlogPosts={featuredBlogPosts} />
             </Box>
           </GridItem>
 
@@ -186,7 +99,7 @@ const BlogPostPage = ({ data }: BlogPostProps) => {
   )
 }
 
-export const blogPostQuery = graphql`
+export const BlogPostQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     featuredBlogPosts: allContentfulBlogPost(
       limit: 2

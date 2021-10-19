@@ -52,7 +52,7 @@ const FeaturedPostsBox = ({ featuredBlogPosts }: FeaturedPostsBoxProps) => {
                   <GatsbyImage
                     image={resFeatureImage}
                     alt="hello"
-                    style={{ borderRadius: "8px", width: "100px"}}
+                    style={{ borderRadius: "8px", width: "100px", transform: "translateZ(0)"}}
                   />
                 </Box>
               )}

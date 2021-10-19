@@ -53,7 +53,7 @@ const IndexPage = () => {
     <Layout>
       <Seo
         title="tornvallalexander"
-        description="I solve problems on a daily basis, and I love it."
+        description="I solve problems for a living."
       />
       { allContentfulBlogPost.edges.map((post) => {
         const { author, updatedAt, metaDescription, title, categories, slug} = post.node

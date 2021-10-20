@@ -17,7 +17,8 @@ const CustomBadge = ({ children }: BadgeProps) => {
       fontSize="sm"
       transition=".3s"
       fontWeight="700"
-      rounded="2xl"
+      rounded="full"
+      border="1px solid #0279ff"
       _hover={{ bg: "none" }}
     >
       {children}

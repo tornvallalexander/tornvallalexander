@@ -21,6 +21,8 @@ type FeaturedPostsBoxProps = {
   }
 }
 
+// TODO: refactor so that this component is reusable
+// TODO: Make badges/categories only one reference, only one category/post
 const FeaturedPostsBox = ({ featuredBlogPosts }: FeaturedPostsBoxProps) => {
   return (
     <Box
@@ -36,7 +38,7 @@ const FeaturedPostsBox = ({ featuredBlogPosts }: FeaturedPostsBoxProps) => {
         const authorImage = getImage(author.avatarImage)
         const resFeatureImage = getImage(featureImage)
 
-        const mb = index === 0 ? "2rem": "0rem"
+        const mb = index === 0 ? "1rem": "0rem"
         return (
           <Link
             key={index}
@@ -46,31 +48,33 @@ const FeaturedPostsBox = ({ featuredBlogPosts }: FeaturedPostsBoxProps) => {
               textDecoration: "none",
             }}
           >
-            <Flex mb={mb} alignItems="center">
-              {resFeatureImage && (
-                <Box>
-                  <GatsbyImage
-                    image={resFeatureImage}
-                    alt="hello"
-                    style={{ borderRadius: "8px", width: "100px", transform: "translateZ(0)"}}
-                  />
-                </Box>
-              )}
-
-              <Box ml="1rem" textAlign="left">
-                <Heading as="p" fontSize="md">{title}</Heading>
-
-                <Flex justifyContent="space-between" alignItems="center">
-                  <Text fontSize="sm">{createdAt}</Text>
-                  {authorImage && (
+            <Box transition=".3s" _hover={{ bg: "#0279ff"}} p="1rem" borderRadius="2xl" mb={mb}>
+              <Flex alignItems="center">
+                {resFeatureImage && (
+                  <Box>
                     <GatsbyImage
-                      image={authorImage}
-                      alt={author.fullName}
+                      image={resFeatureImage}
+                      alt="hello"
+                      style={{ borderRadius: "8px", width: "100px", transform: "translateZ(0)"}}
                     />
-                  )}
-                </Flex>
-              </Box>
-            </Flex>
+                  </Box>
+                )}
+
+                <Box ml="1rem" textAlign="left">
+                  <Heading as="p" fontSize="md">{title}</Heading>
+
+                  <Flex justifyContent="space-between" alignItems="center">
+                    <Text fontSize="sm">{createdAt}</Text>
+                    {authorImage && (
+                      <GatsbyImage
+                        image={authorImage}
+                        alt={author.fullName}
+                      />
+                    )}
+                  </Flex>
+                </Box>
+              </Flex>
+            </Box>
           </Link>
         )
       })}

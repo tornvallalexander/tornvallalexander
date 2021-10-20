@@ -35,6 +35,7 @@ const BlogInfoBox = ({ author, categories, createdAt, slug}: BlogInfoBoxProps) =
           borderRadius="full"
           bg="gray.700"
           transition=".3s"
+          border="1px solid #2D3748"
           _hover={{ bg: "gray.800"}}
         >
           {authorImage && (

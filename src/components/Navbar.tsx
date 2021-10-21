@@ -13,7 +13,7 @@ import {
 import { AiOutlineMenu } from "react-icons/ai";
 import { Link as RouterLink } from "gatsby";
 
-import { NavButton } from "./Button"
+import { NavButton } from "./Buttons"
 
 export default function Navbar() {
   const mobileNav = useDisclosure();
@@ -63,9 +63,8 @@ export default function Navbar() {
           </Flex>
           <HStack display="flex" alignItems="center" spacing={1}>
             <HStack
-              spacing={1}
+              spacing={3}
               mr={1}
-              color="brand.500"
               display={{ base: "none", md: "inline-flex" }}
             >
               <NavButton>Blog</NavButton>
@@ -94,10 +93,10 @@ export default function Navbar() {
                 p={2}
                 pb={4}
                 m={4}
-                bg={"gray.800"}
-                spacing={3}
-                rounded="sm"
                 borderRadius="2xl"
+                bg="rgb(26,32,44, 0.99)"
+                border="1px solid #2d3748"
+                spacing={3}
                 shadow="sm"
               >
                 <CloseButton

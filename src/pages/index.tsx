@@ -17,7 +17,7 @@ type IndexQueryTypes = {
         updatedAt: string,
         metaDescription: string,
         title: string,
-        categories: string[],
+        category: string,
         slug: string,
       }
     }[]
@@ -40,7 +40,7 @@ const IndexPage = () => {
               updatedAt(formatString: "MMMM DD, YYYY", locale: "en")
               metaDescription
               title
-              categories
+              category
               slug
             }
           }
@@ -56,12 +56,12 @@ const IndexPage = () => {
         description="I solve problems for a living."
       />
       { allContentfulBlogPost.edges.map((post) => {
-        const { author, updatedAt, metaDescription, title, categories, slug} = post.node
+        const { author, updatedAt, metaDescription, title, category, slug} = post.node
         return (
           <ArticleCard
             key={title}
             author={author}
-            categories={categories}
+            category={category}
             metaDescription={metaDescription}
             slug={slug}
             title={title}

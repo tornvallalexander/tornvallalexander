@@ -42,7 +42,7 @@ type BlogPostProps = {
       metaDescription: string,
       keywords: string[],
       title: string,
-      categories: string[],
+      category: string,
       slug: string,
     }
   }
@@ -56,7 +56,7 @@ const BlogPostPage = ({ data }: BlogPostProps) => {
     keywords,
     article,
     author,
-    categories,
+    category,
     slug,
   } = data.post;
 
@@ -87,7 +87,7 @@ const BlogPostPage = ({ data }: BlogPostProps) => {
             >
               <BlogInfoBox
                 author={author}
-                categories={categories}
+                category={category}
                 createdAt={createdAt}
                 slug={slug}
               />
@@ -111,7 +111,7 @@ const BlogPostPage = ({ data }: BlogPostProps) => {
             >
               <BlogInfoBox
                 author={author}
-                categories={categories}
+                category={category}
                 createdAt={createdAt}
                 slug={slug}
               />
@@ -183,7 +183,7 @@ export const BlogPostQuery = graphql`
       metaDescription
       keywords
       title
-      categories
+      category
       slug
     }
   }

@@ -17,11 +17,11 @@ type ArticleCardProps = {
   updatedAt: string,
   metaDescription: string,
   title: string,
-  categories: string[],
+  category: string,
   slug: string,
 }
 
-const ArticleCard = ({ author, updatedAt, metaDescription, title, categories, slug}: ArticleCardProps) => {
+const ArticleCard = ({ author, updatedAt, metaDescription, title, category, slug}: ArticleCardProps) => {
   const authorImage = getImage(author.avatarImage);
 
   return (
@@ -49,17 +49,9 @@ const ArticleCard = ({ author, updatedAt, metaDescription, title, categories, sl
             >
               {updatedAt}
             </chakra.span>
-            <Box>
-              { categories.map((category) => {
-                return (
-                  <CustomBadge
-                    key={category}
-                  >
-                    {category}
-                  </CustomBadge>
-                  )
-              })}
-            </Box>
+              <CustomBadge>
+                {category}
+              </CustomBadge>
           </Flex>
 
           <Box mt={2}>

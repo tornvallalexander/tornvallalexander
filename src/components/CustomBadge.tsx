@@ -14,10 +14,12 @@ const CustomBadge = ({ children }: BadgeProps) => {
       ml={2}
       bg="#0279ff"
       color="gray.100"
-      fontSize="sm"
+      fontSize="xs"
       transition=".3s"
-      fontWeight="700"
-      rounded="2xl"
+      fontWeight="800"
+      rounded="full"
+      border="1px solid #0279ff"
+      textTransform="uppercase"
       _hover={{ bg: "none" }}
     >
       {children}

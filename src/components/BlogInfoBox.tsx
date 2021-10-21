@@ -11,12 +11,12 @@ type BlogInfoBoxProps = {
     avatarImage: ImageDataLike,
     fullName: string,
   },
-  categories: string[]
+  category: string
   createdAt: string,
   slug: string,
 }
 
-const BlogInfoBox = ({ author, categories, createdAt, slug}: BlogInfoBoxProps) => {
+const BlogInfoBox = ({ author, category, createdAt, slug}: BlogInfoBoxProps) => {
   const { avatarImage, fullName } = author;
 
   const authorImage = getImage(avatarImage);
@@ -47,17 +47,11 @@ const BlogInfoBox = ({ author, categories, createdAt, slug}: BlogInfoBoxProps) =
         </Box>
       </Flex>
       <Flex justifyContent="space-between" alignItems="center" mb="2rem">
-        <Text fontSize="lg">Categories</Text>
+        <Text fontSize="lg">Category</Text>
         <Box>
-          {categories.map((category) => {
-            return (
-              <CustomBadge
-                key={category}
-              >
-                {category}
-              </CustomBadge>
-            )
-          })}
+          <CustomBadge>
+            {category}
+          </CustomBadge>
         </Box>
       </Flex>
       <Flex justifyContent="space-between" alignItems="center">

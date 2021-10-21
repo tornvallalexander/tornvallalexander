@@ -21,8 +21,6 @@ type FeaturedPostsBoxProps = {
   }
 }
 
-// TODO: refactor so that this component is reusable
-// TODO: Make badges/categories only one reference, only one category/post
 const FeaturedPostsBox = ({ featuredBlogPosts }: FeaturedPostsBoxProps) => {
   return (
     <Box
@@ -48,7 +46,15 @@ const FeaturedPostsBox = ({ featuredBlogPosts }: FeaturedPostsBoxProps) => {
               textDecoration: "none",
             }}
           >
-            <Box transition=".3s" _hover={{ bg: "#0279ff"}} p="1rem" borderRadius="2xl" mb={mb}>
+            <Box
+              transition=".3s"
+              bg="none"
+              border="1px solid #0279ff"
+              _hover={{ bg: "#0279ff"}}
+              p="1rem"
+              borderRadius="2xl"
+              mb={mb}
+            >
               <Flex alignItems="center">
                 {resFeatureImage && (
                   <Box>

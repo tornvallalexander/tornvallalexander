@@ -78,7 +78,6 @@ const ProfileTemplate = ({ data}: ProfileTemplateProps) => {
                 Articles
               </Heading>
               {profile.blogPosts.map((post) => {
-                console.log(post)
                 return (
                   <ArticleCard key={post.title} data={post} />
                 )

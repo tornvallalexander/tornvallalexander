@@ -5,6 +5,7 @@ import ArticleCard from "../components/ArticleCard";
 import { graphql, useStaticQuery } from "gatsby"
 import { ImageDataLike } from "gatsby-plugin-image"
 import Seo from "../components/seo"
+import { Box } from "@chakra-ui/react"
 
 type IndexQueryTypes = {
   allContentfulBlogPost: {
@@ -55,13 +56,16 @@ const IndexPage = () => {
         title="tornvallalexander"
         description="I solve problems for a living."
       />
-      { allContentfulBlogPost.edges.map((post) => {
-        return (
-          <ArticleCard
-            data={post.node}
-          />
-        )
-      })}
+      <Box mx="1rem">
+        { allContentfulBlogPost.edges.map((post) => {
+          return (
+            <ArticleCard
+              key={post.node.title}
+              data={post.node}
+            />
+          )
+        })}
+      </Box>
     </Layout>
   )
 }

@@ -28,7 +28,7 @@ const ArticleCard = ({data}: ArticleCardProps) => {
   const authorImage = getImage(author.avatarImage);
 
   return (
-    <Box mx="1rem" textAlign="left">
+    <Box textAlign="left">
       <Flex
         p={{ base: "0", md: "10"}}
         pb={{ base: "10", md: "0"}}

@@ -10,14 +10,14 @@ type BlogInfoBoxProps = {
   author: {
     avatarImage: ImageDataLike,
     fullName: string,
+    slug: string,
   },
   category: string
   createdAt: string,
-  slug: string,
 }
 
-const BlogInfoBox = ({ author, category, createdAt, slug}: BlogInfoBoxProps) => {
-  const { avatarImage, fullName } = author;
+const BlogInfoBox = ({ author, category, createdAt}: BlogInfoBoxProps) => {
+  const { avatarImage, fullName, slug } = author;
 
   const authorImage = getImage(avatarImage);
   return (

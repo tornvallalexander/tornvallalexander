@@ -26,7 +26,7 @@ const FeaturedPostsBox = ({ featuredBlogPosts }: FeaturedPostsBoxProps) => {
     <Box
       bg="gray.800"
       borderRadius="2xl"
-      p={{ base: "1rem", md: "2rem" }}
+      p={{ base: "1rem", md: "0rem" }}
       mt="2rem"
       mb={{ base: "2rem", md: "0rem"}}
     >
@@ -35,8 +35,6 @@ const FeaturedPostsBox = ({ featuredBlogPosts }: FeaturedPostsBoxProps) => {
 
         const authorImage = getImage(author.avatarImage)
         const resFeatureImage = getImage(featureImage)
-
-        const mb = index === 0 ? "1rem": "0rem"
         return (
           <Link
             key={index}
@@ -49,11 +47,9 @@ const FeaturedPostsBox = ({ featuredBlogPosts }: FeaturedPostsBoxProps) => {
             <Box
               transition=".3s"
               bg="none"
-              border="1px solid #0279ff"
               _hover={{ bg: "#0279ff"}}
-              p="1rem"
+              p={{ base: "1rem", md: "2rem" }}
               borderRadius="2xl"
-              mb={mb}
             >
               <Flex alignItems="center">
                 {resFeatureImage && (

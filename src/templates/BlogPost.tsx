@@ -37,13 +37,13 @@ type BlogPostProps = {
         fullName: string,
         avatarImage: ImageDataLike,
         title: string
+        slug: string,
       }
       createdAt: string,
       metaDescription: string,
       keywords: string[],
       title: string,
       category: string,
-      slug: string,
     }
   }
 }
@@ -57,7 +57,6 @@ const BlogPostPage = ({ data }: BlogPostProps) => {
     article,
     author,
     category,
-    slug,
   } = data.post;
 
   const featuredBlogPosts = data.featuredBlogPosts;
@@ -89,7 +88,6 @@ const BlogPostPage = ({ data }: BlogPostProps) => {
                 author={author}
                 category={category}
                 createdAt={createdAt}
-                slug={slug}
               />
 
               <FeaturedPostsBox featuredBlogPosts={featuredBlogPosts} />
@@ -97,12 +95,12 @@ const BlogPostPage = ({ data }: BlogPostProps) => {
           </GridItem>
 
           <GridItem colSpan={2} textAlign="left">
-              <Box bg="gray.800" borderRadius="2xl" p={{ base: "1rem", md: "2rem" }}>
-                <Heading as="h1" textStyle="heading" mb="2rem" color="white">
-                  {title}
-                </Heading>
-                <BlogBody content={article} />
-              </Box>
+            <Box bg="gray.800" borderRadius="2xl" p={{ base: "1rem", md: "2rem" }}>
+              <Heading as="h1" textStyle="heading" mb="2rem" color="white">
+                {title}
+              </Heading>
+              <BlogBody content={article} />
+            </Box>
           </GridItem>
 
           <GridItem d={{ base: "block", md: "none"}} colSpan={1} color="white" mt="2rem" mb="-8rem">
@@ -113,7 +111,6 @@ const BlogPostPage = ({ data }: BlogPostProps) => {
                 author={author}
                 category={category}
                 createdAt={createdAt}
-                slug={slug}
               />
 
               <FeaturedPostsBox featuredBlogPosts={featuredBlogPosts} />
@@ -144,9 +141,9 @@ export const BlogPostQuery = graphql`
               gatsbyImageData(width: 30)
             }
             fullName
+            slug
           }
           title
-          slug
         }
       }
     }
@@ -174,6 +171,7 @@ export const BlogPostQuery = graphql`
       }
       author {
         fullName
+        slug
         avatarImage {
           gatsbyImageData(width: 50)
           title

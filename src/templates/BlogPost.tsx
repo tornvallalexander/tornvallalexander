@@ -95,12 +95,12 @@ const BlogPostPage = ({ data }: BlogPostProps) => {
           </GridItem>
 
           <GridItem colSpan={2} textAlign="left">
-              <Box bg="gray.800" borderRadius="2xl" p={{ base: "1rem", md: "2rem" }}>
-                <Heading as="h1" textStyle="heading" mb="2rem" color="white">
-                  {title}
-                </Heading>
-                <BlogBody content={article} />
-              </Box>
+            <Box bg="gray.800" borderRadius="2xl" p={{ base: "1rem", md: "2rem" }}>
+              <Heading as="h1" textStyle="heading" mb="2rem" color="white">
+                {title}
+              </Heading>
+              <BlogBody content={article} />
+            </Box>
           </GridItem>
 
           <GridItem d={{ base: "block", md: "none"}} colSpan={1} color="white" mt="2rem" mb="-8rem">

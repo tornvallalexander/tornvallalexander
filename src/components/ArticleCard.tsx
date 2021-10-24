@@ -10,22 +10,25 @@ import { GatsbyImage, getImage, ImageDataLike } from "gatsby-plugin-image"
 import CustomBadge from "./CustomBadge"
 
 type ArticleCardProps = {
-  author: {
-    fullName: string,
-    avatarImage: ImageDataLike,
-  },
-  updatedAt: string,
-  metaDescription: string,
-  title: string,
-  category: string,
-  slug: string,
+  data: {
+    author: {
+      fullName: string,
+      avatarImage: ImageDataLike,
+    },
+    createdAt: string,
+    metaDescription: string,
+    title: string,
+    category: string,
+    slug: string,
+  }
 }
 
-const ArticleCard = ({ author, updatedAt, metaDescription, title, category, slug}: ArticleCardProps) => {
+const ArticleCard = ({data}: ArticleCardProps) => {
+  const { author, createdAt, metaDescription, title, category, slug } = data
   const authorImage = getImage(author.avatarImage);
 
   return (
-    <Box mx="1rem">
+    <Box mx="1rem" textAlign="left">
       <Flex
         p={{ base: "0", md: "10"}}
         pb={{ base: "10", md: "0"}}
@@ -47,7 +50,7 @@ const ArticleCard = ({ author, updatedAt, metaDescription, title, category, slug
               fontSize="sm"
               color="gray.400"
             >
-              {updatedAt}
+              {createdAt}
             </chakra.span>
               <CustomBadge>
                 {category}

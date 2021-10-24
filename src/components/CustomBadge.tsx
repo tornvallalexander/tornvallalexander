@@ -3,7 +3,7 @@ import * as React from "react";
 import { Link } from "@chakra-ui/react"
 
 type BadgeProps = {
-  children: React.ReactNode
+  children: React.ReactNode,
 }
 
 const CustomBadge = ({ children }: BadgeProps) => {

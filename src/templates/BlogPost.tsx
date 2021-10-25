@@ -141,8 +141,8 @@ export const BlogPostQuery = graphql`
               gatsbyImageData(width: 30)
             }
             fullName
-            slug
           }
+          slug
           title
         }
       }

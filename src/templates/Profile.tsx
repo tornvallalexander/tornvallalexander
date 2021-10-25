@@ -127,8 +127,8 @@ const ProfileTemplate = ({ data}: ProfileTemplateProps) => {
               >
                 {profile.blogPosts.map((post) => {
                   return (
-                    <GridItem>
-                      <ArticlePreview key={post.title} data={post} />
+                    <GridItem key={post.title}>
+                      <ArticlePreview data={post} />
                     </GridItem>
                   )
                 })}

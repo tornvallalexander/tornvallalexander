@@ -37,6 +37,8 @@ const ArticleCard = ({data}: ArticleCardProps) => {
         justifyContent="center"
       >
         <Box
+          transition=".3s"
+          _hover={{ transform: "translateY(-.5rem)" }}
           mx="auto"
           px={8}
           py={4}

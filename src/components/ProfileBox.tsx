@@ -34,9 +34,11 @@ const ProfileBox = ({ profile }: ProfileBoxProps) => {
         <Heading as="h1" fontSize="3xl" mb=".5rem">
           {fullName}
         </Heading>
-        <CustomBadge>
-          {businessTitle}
-        </CustomBadge>
+        <Box maxW="200px" mx="auto">
+          <CustomBadge>
+            {businessTitle}
+          </CustomBadge>
+        </Box>
         <Box mt="2rem">
           <Link
             href={linkedin}

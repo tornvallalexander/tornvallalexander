@@ -67,9 +67,9 @@ export default function Navbar() {
               mr={1}
               display={{ base: "none", md: "inline-flex" }}
             >
-              <NavButton>Blog</NavButton>
-              <NavButton>About</NavButton>
-              <NavButton>Sign in</NavButton>
+              <NavButton link="/">Blog</NavButton>
+              <NavButton link="/profile/alexander-tornvall">About</NavButton>
+              <NavButton link="/">Sign in</NavButton>
             </HStack>
             <Box display={{ base: "inline-flex", md: "none" }}>
               <IconButton
@@ -105,9 +105,9 @@ export default function Navbar() {
                   color="white"
                 />
 
-                <NavButton>Blog</NavButton>
-                <NavButton>About</NavButton>
-                <NavButton>Sign in</NavButton>
+                <NavButton link="/">Blog</NavButton>
+                <NavButton link="/profile/alexander-tornvall">About</NavButton>
+                <NavButton link="/">Sign in</NavButton>
               </VStack>
             </Box>
           </HStack>

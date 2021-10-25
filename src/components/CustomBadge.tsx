@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Link } from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
 
 type BadgeProps = {
   children: React.ReactNode,
@@ -8,10 +8,9 @@ type BadgeProps = {
 
 const CustomBadge = ({ children }: BadgeProps) => {
   return (
-    <Link
+    <Box
       px={3}
       py={1}
-      ml={2}
       bg="#0279ff"
       color="gray.100"
       fontSize="xs"
@@ -23,7 +22,7 @@ const CustomBadge = ({ children }: BadgeProps) => {
       _hover={{ bg: "none" }}
     >
       {children}
-    </Link>
+    </Box>
   )
 };
 

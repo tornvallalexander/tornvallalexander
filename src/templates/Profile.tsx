@@ -1,12 +1,12 @@
 import * as React from "react";
 
-import { Box, Divider, Grid, GridItem, Heading, Text } from "@chakra-ui/react"
+import { Box, Divider, Grid, GridItem, Heading, Progress, Text } from "@chakra-ui/react"
 import { graphql } from "gatsby"
 import { ImageDataLike } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import ProfileBox from "../components/ProfileBox"
-import ArticleCard from "../components/ArticleCard"
+import ArticlePreview from "../components/ArticlePreview"
 
 
 type ProfileTemplateProps = {
@@ -17,6 +17,11 @@ type ProfileTemplateProps = {
       description: string,
       linkedin: string,
       businessTitle: string,
+      skills: {
+        skill: string,
+        percentage: number,
+        colorScheme: string,
+      }[]
       blogPosts: {
         title: string,
         author: {
@@ -27,6 +32,7 @@ type ProfileTemplateProps = {
         category: string,
         slug: string,
         metaDescription: string,
+        featureImage: ImageDataLike,
       }[]
     }
   }
@@ -70,18 +76,63 @@ const ProfileTemplate = ({ data}: ProfileTemplateProps) => {
               color="cyan.50"
               textAlign="left"
             >
-              <Text fontSize="lg" fontWeight="medium">
+
+              <Heading>
+                About {profile.fullName}
+              </Heading>
+              <Text fontSize="lg" fontWeight="medium" mt="1rem">
                 {profile.description}
               </Text>
+
               <Divider my="2rem" />
+
+              <Heading>
+                Skills
+              </Heading>
+              <Box mt="2rem">
+                {profile.skills.map((skill) => {
+                  return (
+                    <Box key={skill.skill}>
+                      <Heading fontSize="xl" as="h3" mb="1rem">
+                        {skill.skill}
+                      </Heading>
+                      <Progress
+                        colorScheme={skill.colorScheme}
+                        value={skill.percentage}
+                        hasStripe
+                        isAnimated mb="2rem"
+                        borderRadius="full" />
+                    </Box>
+                  )
+                })}
+              </Box>
+
+              <Divider my="2rem" />
+
               <Heading>
                 Articles
               </Heading>
-              {profile.blogPosts.map((post) => {
-                return (
-                  <ArticleCard key={post.title} data={post} />
-                )
-              })}
+              <Grid
+                maxW="1200px"
+                templateColumns={{
+                  base: "1fr",
+                  md: "repeat(2, 1fr)",
+                }}
+                templateRows={{ base: "none", md: "1fr" }}
+                // gridAutoRows="1fr"
+                gap="2rem"
+                mx="auto"
+                textAlign="center"
+                my="2rem"
+              >
+                {profile.blogPosts.map((post) => {
+                  return (
+                    <GridItem>
+                      <ArticlePreview key={post.title} data={post} />
+                    </GridItem>
+                  )
+                })}
+              </Grid>
             </Box>
           </GridItem>
 
@@ -103,6 +154,11 @@ export const ProfileTemplateQuery = graphql`
       description
       fullName
       linkedin
+       skills {
+         skill
+         percentage
+         colorScheme
+       }
       blogPosts: blog_post {
         title
         author {
@@ -114,6 +170,9 @@ export const ProfileTemplateQuery = graphql`
         createdAt(formatString: "MMMM DD, YYYY", locale: "en")
         category
         slug
+        featureImage {
+          gatsbyImageData(aspectRatio: 1.5, width: 600)
+        }
         metaDescription
       }
     }

@@ -13,7 +13,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <>
       <Box bg="gray.700">
         <Navbar />
-        <Box py="4rem">
+        <Box py={{ base: "2rem", md: "4rem" }}>
           {children}
         </Box>
       </Box>
